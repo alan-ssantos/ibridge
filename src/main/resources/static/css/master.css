@@ -1,0 +1,39 @@
+body{
+    margin-top: 72px;
+}
+
+.btn, .btn-lg{
+    border-radius: .15rem;
+}
+
+.navbar{
+    padding: 1rem 1.2rem;
+}
+
+.jumbotron{
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-height: calc(100vh - 72px);
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.jumbotron-container{
+    position: relative;
+    z-index: 1;
+}
+
+.jumbotron-video{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    opacity: .3;
+}
+
+.jumbotron-video video{
+    min-width: 100%;
+    min-height: 100%;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{template}">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <div layout:fragment="conteudo">
+        <div class="jumbotron jumbotron-fluid text-light">
+            <div class="container jumbotron-container">
+                <h1>I-Bridge</h1>
+                <p class="lead">Este é um simples componente jumbotron para chamar mais atenção a um determinado conteúdo ou informação.</p>
+                <hr class="my-4">
+                <p>Ele usa classes utilitárias para tipografia e espaçamento de conteúdo, dentro do maior container.</p>
+                <a class="btn btn-light btn-lg" href="#" role="button">Leia mais</a>
+            </div>
+            <div class="jumbotron-video">
+                <video th:src="@{/images/jumbotron-video.mp4}" autoplay loop></video>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col bg-success mr-2 p-3">
+                        <h2 >Startups</h2>
+                        <p>Veja quem parcipe ou cadastre a sua startup para encontrar um investidor</p>
+                    </div>
+                    <div class="col bg-danger ml-2 p-3">
+                        <h2 >Investidores</h2>
+                        <p>Cadastre-se e encontre a startup certa para investir</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div layout:fragment="rodape"></div>
+</body>
+</html>

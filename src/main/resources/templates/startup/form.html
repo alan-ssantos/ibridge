@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template}">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <div layout:fragment="conteudo">
+        <div class="container-fluid">
+            <div class="container">
+                <h1 th:text="${startup.id==0?'Cadastro de Startup':'Atualização de Startup'}"></h1>
+                <form th:action="@{/startup/salvar}" th:object="${startup}" enctype="multipart/form-data" method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="form-group">
+                        <label>Nome:</label>
+                        <input type="text" th:field="*{nome}" class="form-control">
+                        <p th:errors="*{nome}" class="text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Descrição:</label>
+                        <input type="text" th:field="*{descricao}" class="form-control">
+                        <p th:errors="*{descricao}" class="text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Data de fundação:</label>
+                        <input type="text" th:field="*{dataFundacao}" class="form-control">
+                        <p th:errors="*{dataFundacao}" class="text-danger"></p>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div layout:fragment="rodape"></div>
+</body>
+</html>
