@@ -3,18 +3,16 @@ package br.com.ibridge.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Entity
-@SequenceGenerator(name = "startup", sequenceName = "T_SQ_STARTUP", allocationSize = 1)
+@SequenceGenerator(name = "startup", sequenceName = "SQ_T_STARTUP", allocationSize = 1)
 public class Startup {
 
     @Id
-    @GeneratedValue(generator = "startup", strategy = GenerationType.SEQUENCE)
     @Column(name = "STARTUP_ID")
+    @GeneratedValue(generator = "startup", strategy = GenerationType.SEQUENCE)
     private int id;
 
     @Size(max = 50, message = "O nome deve ter no máximo 50 letras")
@@ -31,13 +29,19 @@ public class Startup {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFundacao;
 
-    /*
-    * ENDERECO (RUA, NUMERO, BAIRRO, CIDADE, ESTADO)
-    * CONTATO (EMAIL E TELEFONE)
-    * CATEGORIA *
-    * QTD DE FUNCIONARIOS (RANGE)
-    * LINK PARA SITE OFICIAL *
-    * */
+    @Email(message = "Insira um e-mail válido")
+    @NotBlank(message = "Um e-mail é obrigatório")
+    @Column(name = "STARTUP_EMAIL", nullable = false)
+    private String email;
+
+    @Column(name = "STARTUP_TELEFONE", length = 11)
+    private String telefone;
+
+    @Column(name = "STARTUP_SITE")
+    private String site;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Endereco endereco;
 
     public int getId() {
         return id;
@@ -71,4 +75,35 @@ public class Startup {
         this.dataFundacao = dataFundacao;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 }

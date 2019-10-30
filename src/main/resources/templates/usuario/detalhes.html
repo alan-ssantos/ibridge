@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template}">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <div class="container" th:object="${usuario}">
+        <h1 th:text="*{nome}"></h1>
+        <p th:text="*{email}"></p>
+        <p th:text="*{telefone}"></p>
+    </div>
+</div>
+<div layout:fragment="rodape"></div>
+</body>
+</html>

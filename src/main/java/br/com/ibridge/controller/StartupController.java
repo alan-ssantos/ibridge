@@ -7,15 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 @Controller
 @RequestMapping("startup")
@@ -24,10 +18,15 @@ public class StartupController {
     @Autowired
     private StartupRepository startupRepository;
 
+    @GetMapping
+    public String index(){
+        return "startup/lista";
+    }
+
     @GetMapping("{id}")
     public String buscar(@PathVariable("id") int id, Model model){
         model.addAttribute("startup", startupRepository.findById(id).get());
-        return "startup/index";
+        return "startup/detalhes";
     }
 
     @GetMapping("lista")
@@ -43,7 +42,6 @@ public class StartupController {
 
     @PostMapping("salvar")
     public String salvar(@Valid Startup startup, BindingResult result, RedirectAttributes redirectAttributes){
-        result.getModel();
         if (result.hasErrors()) return "/startup/form";
 
         redirectAttributes.addFlashAttribute("msg", startup.getId()==0?"Startup cadastrada!":"Startup atualizada!");

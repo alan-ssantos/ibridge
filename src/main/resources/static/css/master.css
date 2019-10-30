@@ -37,3 +37,15 @@ body{
     min-width: 100%;
     min-height: 100%;
 }
+
+.login-left{
+    background: url(https://images.pexels.com/photos/2832382/pexels-photo-2832382.jpeg?cs=srgb&dl=abstract-abstract-art-abstract-background-2832382.jpg&fm=jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    opacity: .6;
+}
+
+.login-right{
+    min-height: 100vh;
+}

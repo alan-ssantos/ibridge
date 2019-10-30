@@ -4,29 +4,19 @@
       layout:decorate="~{template}">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Cadastro de Usuário</title>
 </head>
 <body>
     <div layout:fragment="conteudo">
         <div class="container-fluid">
             <div class="container">
-                <h1 th:text="${startup.id==0?'Cadastro de Startup':'Atualização de Startup'}"></h1>
-                <form th:action="@{/startup/salvar}" th:object="${startup}" enctype="multipart/form-data" method="post">
+                <h1 th:text="${usuario.id==0?'Cadastro de Usuario':'Atualização de Usuario'}"></h1>
+                <form th:action="@{/usuario/salvar}" th:object="${usuario}" enctype="multipart/form-data" method="post">
                     <input type="hidden" th:field="*{id}"/>
                     <div class="form-group">
                         <label>Nome:</label>
                         <input type="text" th:field="*{nome}" class="form-control">
                         <p th:errors="*{nome}" class="text-danger"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Descrição:</label>
-                        <input type="text" th:field="*{descricao}" class="form-control">
-                        <p th:errors="*{descricao}" class="text-danger"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Data de fundação:</label>
-                        <input type="text" th:field="*{dataFundacao}" class="form-control">
-                        <p th:errors="*{dataFundacao}" class="text-danger"></p>
                     </div>
                     <div class="form-group">
                         <label>E-mail:</label>
@@ -38,10 +28,17 @@
                         <input type="text" th:field="*{telefone}" class="form-control">
                         <p th:errors="*{telefone}" class="text-danger"></p>
                     </div>
+
                     <div class="form-group">
-                        <label>Site:</label>
-                        <input type="text" th:field="*{site}" class="form-control">
-                        <p th:errors="*{site}" class="text-danger"></p>
+                        <label>Data de Nascimento:</label>
+                        <input type="text" th:field="*{dataNascimento}" class="form-control">
+                        <p th:errors="*{dataNascimento}" class="text-danger"></p>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" th:field="*{investidor}" class="form-check-inline">
+                        <label>É um investidor?</label>
+                        <p th:errors="*{investidor}" class="text-danger"></p>
                     </div>
 
                     <div class="form-group">
