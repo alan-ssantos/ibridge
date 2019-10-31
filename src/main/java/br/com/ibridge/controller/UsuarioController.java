@@ -1,6 +1,7 @@
 package br.com.ibridge.controller;
 
 import br.com.ibridge.model.Usuario;
+import br.com.ibridge.model.UsuarioBean;
 import br.com.ibridge.repository.UsuarioRepository;
 import org.omg.PortableInterceptor.ServerRequestInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.jws.WebParam;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -47,15 +49,29 @@ public class UsuarioController {
 
     @PostMapping("salvar")
     public String salvar(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes){
-        if (result.hasErrors()) return "/";
+        if (result.hasErrors()) return "form";
 
         attributes.addFlashAttribute("msg", usuario.getId()==0?"Cadastrado!":"Atualizado!");
         usuarioRepository.save(usuario);
-        return "redirect:/";
+        return "redirect:form";
     }
 
     @GetMapping("login")
-    public String login(){
+    public String login(UsuarioBean bean, Model model){
+        model.addAttribute("bean", bean);
         return "usuario/login";
     }
+
+    @PostMapping("login")
+    public String logar(UsuarioBean bean, HttpSession session){
+        Usuario usuario;
+
+        usuario = usuarioRepository.findByEmailAndSenha(bean.getEmail(), bean.getSenha());
+
+        if (usuario == null) return "redirect:cadastrar";
+
+        session.setAttribute("usuarioLogado", true);
+        return "redirect:/startup/lista";
+    }
+
 }

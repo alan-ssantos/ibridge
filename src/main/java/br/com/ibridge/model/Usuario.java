@@ -1,6 +1,8 @@
 package br.com.ibridge.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import java.time.LocalDate;
@@ -19,8 +21,12 @@ public class Usuario {
     private String nome;
 
     @NotBlank(message = "O E-mail é obrigatório")
-    @Column(name = "USUARIO_EMAIL", nullable = false)
+    @Column(name = "USUARIO_EMAIL", nullable = false, unique = true)
     private String email;
+
+    @Min(value = 6, message = "A senha deve ter no minimo 6 caracteres")
+    @Column(name = "USUARIO_SENHA", nullable = false)
+    private String senha;
 
     @Column(name = "USUARIO_TELEFONE", length = 11)
     private String telefone;
@@ -57,6 +63,14 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getTelefone() {
