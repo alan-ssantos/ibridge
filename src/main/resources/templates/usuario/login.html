@@ -16,6 +16,8 @@
             </div>
 
             <div class="col-md login-right d-flex flex-column justify-content-center align-items-center text-light ">
+                <div th:text="${msg}" class="alert alert-success" th:if="${msg}"></div>
+
                 <img src="https://img.icons8.com/officexs/64/000000/bullish.png" class="mb-5">
 
                 <form th:action="@{/usuario/login}" th:object="${bean}" method="post" class="w-75">

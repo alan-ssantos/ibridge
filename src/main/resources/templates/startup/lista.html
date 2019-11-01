@@ -13,6 +13,7 @@
             <div th:text="${msg}" class="alert alert-success" th:if="${msg}"></div>
 
             <h1>Lista de Startups</h1>
+            <p th:text="${usuario.email}" th:if="${usuario}"></p>
             <div class="row justify-content-center">
                 <div th:each="s:${startups}" class="col-12 col-sm-6 col-md-4 col-lg-3 my-3">
                     <div class="card text-dark">

@@ -1,7 +1,10 @@
 package br.com.ibridge.model;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
 
+
+@Scope("session")
 public class UsuarioBean {
 
     private String email;

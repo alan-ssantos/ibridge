@@ -1,5 +1,7 @@
 package br.com.ibridge.model;
 
+import org.springframework.context.annotation.Scope;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -9,6 +11,7 @@ import java.time.LocalDate;
 
 @Entity
 @SequenceGenerator(name = "usuario", sequenceName = "SQ_T_USUARIO", allocationSize = 1)
+@Scope("session")
 public class Usuario {
 
     @Id

@@ -1,18 +1,23 @@
 package br.com.ibridge.controller;
 
 import br.com.ibridge.model.Startup;
+import br.com.ibridge.model.Usuario;
+import br.com.ibridge.model.UsuarioBean;
 import br.com.ibridge.repository.StartupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
 @RequestMapping("startup")
+@Scope("session")
 public class StartupController {
 
     @Autowired
@@ -30,7 +35,13 @@ public class StartupController {
     }
 
     @GetMapping("lista")
-    public String listar(Model model){
+    public String listar(Model model, HttpSession session, RedirectAttributes attributes){
+        UsuarioBean usuarioLogado = (UsuarioBean) session.getAttribute("usuarioLogado");
+
+        if (usuarioLogado != null){
+            model.addAttribute("usuario", usuarioLogado);
+        }
+
         model.addAttribute("startups", startupRepository.findAll());
         return "startup/lista";
     }

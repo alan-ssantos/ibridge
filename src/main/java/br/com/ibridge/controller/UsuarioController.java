@@ -5,6 +5,7 @@ import br.com.ibridge.model.UsuarioBean;
 import br.com.ibridge.repository.UsuarioRepository;
 import org.omg.PortableInterceptor.ServerRequestInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +21,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("usuario")
+@Scope("session")
 public class UsuarioController {
 
     @Autowired
@@ -63,15 +65,18 @@ public class UsuarioController {
     }
 
     @PostMapping("login")
-    public String logar(UsuarioBean bean, HttpSession session){
+    public String logar(UsuarioBean bean, HttpSession session, RedirectAttributes attributes){
         Usuario usuario;
-
         usuario = usuarioRepository.findByEmailAndSenha(bean.getEmail(), bean.getSenha());
 
-        if (usuario == null) return "redirect:cadastrar";
+        if (usuario == null){
+            attributes.addFlashAttribute("msg", "Usuário ou senha inválidos");
+        }
 
-        session.setAttribute("usuarioLogado", true);
-        return "redirect:/startup/lista";
+        session.setAttribute("usuarioLogado", bean);
+        attributes.addFlashAttribute("msg", session.getAttribute("usuarioLogado"));
+
+        return "redirect:login";
     }
 
 }

@@ -10,6 +10,8 @@
     <div layout:fragment="conteudo">
         <div class="container-fluid">
             <div class="container">
+                <div th:text="${msg}" class="alert alert-success" th:if="${msg}"></div>
+
                 <h1 th:text="${usuario.id==0?'Cadastro de Usuario':'Atualização de Usuario'}"></h1>
                 <form th:action="@{/usuario/salvar}" th:object="${usuario}" method="post">
                     <input type="hidden" th:field="*{id}"/>
