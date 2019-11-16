@@ -12,12 +12,31 @@
         <div class="container">
             <div th:text="${msg}" class="alert alert-success" th:if="${msg}"></div>
 
-            <h1>Lista de Startups</h1>
+            <div class="py-4">
+                <h1 class="display-5">Lista de Startup</h1>
+                <p>Veja aqui todas as startups que estão cadastradas em nosso site.</p>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form th:action="@{/startup/buscar}" method="get" class="form-inline p-2">
+                        <div class="form-group mr-1">
+                            <label for="inPassword" class="sr-only">Busque</label>
+                            <input type="text" class="form-control bg-dark text-light" id="inPassword" name="q" placeholder="Fintech">
+                        </div>
+                        <button type="submit" class="btn btn-light">Buscar</button>
+                    </form>
+                </div>
+                <div class="col text-right">
+                    <a th:href="@{/startup/cadastrar}" class="btn btn-success">Adicionar uma Startup</a>
+                </div>
+            </div>
+
             <p th:text="${usuario.email}" th:if="${usuario}"></p>
-            <div class="row justify-content-center">
+            <div class="row">
                 <div th:each="s:${startups}" class="col-12 col-sm-6 col-md-4 col-lg-3 my-3">
-                    <div class="card text-dark">
-                        <img class="card-img-top" src=".../100px180/" alt="Imagem de capa do card">
+                    <div class="card text-light">
+                        <img class="card-img-top" th:src="@{/images/card_startup.png}" alt="Imagem de capa do card">
                         <div class="card-body">
                             <h5 class="card-title" th:text="*{s.nome}"></h5>
                             <p class="card-text" th:text="*{s.descricao}"></p>

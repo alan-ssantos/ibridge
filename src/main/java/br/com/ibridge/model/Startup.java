@@ -3,6 +3,7 @@ package br.com.ibridge.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 
@@ -41,6 +42,7 @@ public class Startup {
     private String site;
 
     @ManyToOne(cascade = CascadeType.ALL)
+    @Valid
     private Endereco endereco;
 
     public int getId() {

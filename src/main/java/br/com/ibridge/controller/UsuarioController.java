@@ -69,13 +69,13 @@ public class UsuarioController {
         Usuario usuario;
         usuario = usuarioRepository.findByEmailAndSenha(bean.getEmail(), bean.getSenha());
 
-        if (usuario == null){
-            attributes.addFlashAttribute("msg", "Usuário ou senha inválidos");
+        if (usuario != null){
+            session.setAttribute("usuarioLogado", bean);
+            attributes.addFlashAttribute("msg", session.getAttribute("usuarioLogado"));
+            return "redirect:login";
         }
 
-        session.setAttribute("usuarioLogado", bean);
-        attributes.addFlashAttribute("msg", session.getAttribute("usuarioLogado"));
-
+        attributes.addFlashAttribute("msg", "Usuário ou senha inválidos");
         return "redirect:login";
     }
 

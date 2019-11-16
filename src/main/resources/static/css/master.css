@@ -38,6 +38,37 @@ body{
     min-height: 100%;
 }
 
+.top-box{
+    background: #fff2;
+    border-radius: .25rem;
+}
+
+.card{
+    min-width: 220px;
+    min-height: 420px;
+    background: #fff2;
+    transition: .25s;
+}
+
+.card:hover{
+    background: #fff3;
+    box-shadow: 0 0 1rem #fff2;
+}
+
+.card-text{
+    height: calc(1.4em * 3);
+    overflow: hidden;
+    line-height: 1.4em;
+    word-wrap: break-word;
+    color: #ddd;
+}
+
+.card-img-top{
+    width: auto;
+    max-height: 220px;
+    object-fit: cover;
+}
+
 .login-left{
     background: url(https://images.pexels.com/photos/2832382/pexels-photo-2832382.jpeg?cs=srgb&dl=abstract-abstract-art-abstract-background-2832382.jpg&fm=jpg);
     background-attachment: fixed;
@@ -49,3 +80,4 @@ body{
 .login-right{
     min-height: 100vh;
 }
+
