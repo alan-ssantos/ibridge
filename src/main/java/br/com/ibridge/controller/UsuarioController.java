@@ -71,8 +71,8 @@ public class UsuarioController {
 
         if (usuario != null){
             session.setAttribute("usuarioLogado", bean);
-            attributes.addFlashAttribute("msg", session.getAttribute("usuarioLogado"));
-            return "redirect:login";
+            attributes.addFlashAttribute("msg", "Bem vindo!");
+            return "redirect:/";
         }
 
         attributes.addFlashAttribute("msg", "Usuário ou senha inválidos");

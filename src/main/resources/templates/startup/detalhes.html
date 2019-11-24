@@ -7,15 +7,44 @@
     <title>Home</title>
 </head>
 <body>
-<div layout:fragment="conteudo">
-    <div th:text="${msg}" class="alert alert-success" th:if="${msg}"></div>
+    <div layout:fragment="conteudo">
+        <div th:text="${msg}" class="alert alert-success" th:if="${msg}"></div>
 
-    <div class="container" th:object="${startup}">
-        <h1 th:text="*{nome}"></h1>
-        <p th:text="*{descricao}"></p>
-        <p th:text="*{dataFundacao}"></p>
+        <div class="startup-cover">
+            <img th:src="@{/images/card_startup.png}">
+        </div>
+
+        <div class="container-fluid mb-5" th:object="${startup}">
+            <div class="container">
+                <div class="my-3">
+                    <h1 th:text="*{nome}"></h1>
+                </div>
+                <hr class="bg-secondary">
+                <div class="row">
+                    <div class="col-8 py-2">
+                        <p><strong>Descrição: </strong></p>
+                        <p th:text="*{descricao}"></p>
+                        <p><strong>Data de fundação: </strong></p>
+                        <p th:text="*{dataFundacao}"></p>
+                    </div>
+                    <div class="col-4 bg-secondary py-2">
+                        <p class="lead">Contato: </p>
+                        <p><strong>Endereço</strong></p>
+                        <p th:text="*{endereco.getEnderecoCompleto()}"></p>
+
+                        <p><strong>Telefone:</strong></p>
+                        <p th:text="*{telefone}"></p>
+
+                        <p><strong>E-mail:</strong></p>
+                        <p th:text="*{email}"></p>
+
+                        <p><strong>Site ou Blog</strong></p>
+                        <p th:text="*{site}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 <div layout:fragment="rodape"></div>
 </body>
 </html>

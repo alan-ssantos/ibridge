@@ -75,7 +75,7 @@ public class StartupController {
 
         redirectAttributes.addFlashAttribute("msg", startup.getId()==0?"Startup cadastrada!":"Startup atualizada!");
         startupRepository.save(startup);
-        return "redirect:startup/lista";
+        return "redirect:/startup/lista";
     }
 
     @GetMapping("editar/{id}")

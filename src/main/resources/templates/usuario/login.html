@@ -6,21 +6,23 @@
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
-<body>
+<body style="margin: 0">
+
+<div layout:fragment="navbar" class="d-none"></div>
 
 <div layout:fragment="conteudo">
-    <div class="container-fluid">
+    <div class="container-fluid" >
+        <a th:href="@{/}" class="btn btn-secondary btn-back">🡠 Voltar</a>
         <div class="row">
             <div class="col-md login-left">
-
             </div>
 
             <div class="col-md login-right d-flex flex-column justify-content-center align-items-center text-light ">
                 <div th:text="${msg}" class="alert alert-success" th:if="${msg}"></div>
 
-                <img src="https://img.icons8.com/officexs/64/000000/bullish.png" class="mb-5">
+                <img src="../../static/images/ibridge_logo.png" th:src="@{/images/ibridge_logo.png}" class="mb-5 login-logo"/>
 
-                <form th:action="@{/usuario/login}" th:object="${bean}" method="post" class="w-75">
+                <form th:action="@{/usuario/login}" th:object="${bean}" method="post" class="w-50">
                     <div class="form-group">
                         <label for="email">Usuário</label>
                         <input type="text" th:field="*{email}" id="email" class="form-control bg-dark text-light">
@@ -33,7 +35,7 @@
                     <button class="btn btn-primary">Entrar</button>
                 </form>
 
-                <a th:href="@{/usuario/cadastrar}" class="nav-link text-light mt-2">Não tem conta? <strong>Cadastre-se aqui!</strong></a>
+                <a th:href="@{/usuario/cadastrar}" class="nav-link text-light mt-5">Não tem conta? <strong>Cadastre-se aqui!</strong></a>
             </div>
         </div>
     </div>

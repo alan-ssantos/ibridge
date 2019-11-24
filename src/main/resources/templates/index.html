@@ -8,6 +8,10 @@
 </head>
 <body>
     <div layout:fragment="conteudo">
+        <div class="container">
+            <div th:text="${msg}" class="alert alert-success" th:if="${msg}"></div>
+        </div>
+
         <div class="jumbotron jumbotron-fluid text-light">
             <div class="container jumbotron-container">
                 <h1>I-Bridge</h1>

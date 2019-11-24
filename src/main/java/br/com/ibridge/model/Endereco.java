@@ -91,4 +91,8 @@ public class Endereco {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public String getEnderecoCompleto(){
+        return (logradouro + " Nº " + numero + ", " + bairro + " - " + cidade + " " + estado);
+    }
 }
