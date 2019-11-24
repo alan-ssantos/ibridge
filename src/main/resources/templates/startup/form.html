@@ -16,8 +16,10 @@
                 <h1 th:text="${startup.id==0?'Cadastro de Startup':'Atualização de Startup'}"></h1>
                 <p class="lead">Cadastre seu projeto para que investidores possam encontra-lo fácilmente.</p>
             </div>
+
             <form th:action="@{/startup/salvar}" th:object="${startup}" enctype="multipart/form-data" method="post">
                 <input type="hidden" th:field="*{id}"/>
+                <input type="hidden" th:value="${session.get('logado').id}" id="usuarioId" name="usuarioId">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

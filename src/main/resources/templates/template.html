@@ -31,14 +31,15 @@
                                 <a class="nav-link" th:href="@{/startup/lista}"><strong>Startups</strong></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" th:href="@{/startup/lista}">Sobre nós</a>
+                                <a class="nav-link" th:href="@{/sobre-nos}">Sobre nós</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" th:href="@{/startup/lista}">Contato</a>
+                                <a class="nav-link" th:href="@{/contato}">Contato</a>
                             </li>
                         </ul>
-                        <p th:text="${usuario.senha}" th:if="${usuario}"></p>
-                        <a th:href="@{/usuario/login}" class="btn btn-outline-light">Entrar</a>
+                        <a th:href="@{/usuario/} + ${session.get('logado').id}" th:text="${session.get('logado').nome}" th:if="${session.get('logado')}" class="text-light my-auto"></a>
+
+                        <a th:href="@{/usuario/login}" th:if="!${session.get('logado')}" class="btn btn-outline-light">Entrar</a>
                     </div>
                 </div>
             </nav>

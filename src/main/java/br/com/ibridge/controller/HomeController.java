@@ -13,7 +13,17 @@ public class HomeController {
     StartupRepository startupRepository;
 
     @GetMapping("/index")
-    public String showIndex(Model model){
+    public String index(Model model){
         return "index";
+    }
+
+    @GetMapping("/contato")
+    public String contato(Model model){
+        return "contato";
+    }
+
+    @GetMapping("/sobre-nos")
+    public String sobre(Model model){
+        return "sobre-nos";
     }
 }

@@ -1,6 +1,7 @@
 package br.com.ibridge.controller;
 
 import br.com.ibridge.model.Startup;
+import br.com.ibridge.model.Usuario;
 import br.com.ibridge.model.UsuarioBean;
 import br.com.ibridge.repository.StartupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +28,6 @@ public class StartupController {
     @Autowired
     private StartupRepository startupRepository;
 
-    @GetMapping
-    public String index(){
-        return "startup/lista";
-    }
-
     @GetMapping("{id}")
     public String buscar(@PathVariable("id") int id, Model model){
         model.addAttribute("startup", startupRepository.findById(id).get());
@@ -44,11 +40,11 @@ public class StartupController {
         return "startup/lista";
     }
 
-    @GetMapping("lista")
+    @GetMapping({"lista", ""})
     public String listar(Model model, HttpSession session, RedirectAttributes attributes){
-        UsuarioBean usuarioLogado = (UsuarioBean) session.getAttribute("usuarioLogado");
+        Usuario usuario = (Usuario) session.getAttribute("logado");
 
-        if (usuarioLogado != null) model.addAttribute("usuario", usuarioLogado);
+        if (usuario != null) model.addAttribute("usuario", usuario);
 
         model.addAttribute("startups", startupRepository.findAll());
         return "startup/lista";
@@ -56,10 +52,10 @@ public class StartupController {
 
     @GetMapping("cadastrar")
     public String cadastrar(Startup startup, Model model, HttpSession session, RedirectAttributes attributes){
-        UsuarioBean usuarioLogado = (UsuarioBean) session.getAttribute("usuarioLogado");
+        Usuario usuario = (Usuario) session.getAttribute("logado");
 
-        if (usuarioLogado != null){
-            model.addAttribute("usuario", usuarioLogado);
+        if (usuario != null){
+            model.addAttribute("usuario", usuario);
             return "startup/form";
         }
 

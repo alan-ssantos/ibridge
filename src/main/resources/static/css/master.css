@@ -88,7 +88,6 @@ body{ margin-top: 62px; }
 
 .login-left{
     position: relative;
-    min-height: 100vh;
     background: url(https://images.pexels.com/photos/2832382/pexels-photo-2832382.jpeg?cs=srgb&dl=abstract-abstract-art-abstract-background-2832382.jpg&fm=jpg);
     background-attachment: fixed;
     background-position: center;

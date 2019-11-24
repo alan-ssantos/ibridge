@@ -18,16 +18,20 @@
             <div class="container">
                 <div class="my-3">
                     <h1 th:text="*{nome}"></h1>
+                    <div th:if="${session.get('logado')} and (*{usuarioId} == ${session.get('logado').id})">
+                        <a th:href="@{/startup/editar/} + *{id}" class="text-light">Editar</a>
+                    </div>
                 </div>
                 <hr class="bg-secondary">
                 <div class="row">
-                    <div class="col-8 py-2">
+                    <div class="col-md-8 col-sm-12 py-2">
                         <p><strong>Descrição: </strong></p>
                         <p th:text="*{descricao}"></p>
                         <p><strong>Data de fundação: </strong></p>
                         <p th:text="*{dataFundacao}"></p>
+
                     </div>
-                    <div class="col-4 bg-secondary py-2">
+                    <div class="col-md-4 col-sm-12 bg-secondary py-2">
                         <p class="lead">Contato: </p>
                         <p><strong>Endereço</strong></p>
                         <p th:text="*{endereco.getEnderecoCompleto()}"></p>

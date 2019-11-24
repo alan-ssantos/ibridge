@@ -45,6 +45,12 @@ public class Startup {
     @Valid
     private Endereco endereco;
 
+    @NotNull
+    @Column(name = "USUARIO_ID")
+    private int usuarioId;
+
+    //GETTERS AND SETTERS
+
     public int getId() {
         return id;
     }
@@ -107,5 +113,13 @@ public class Startup {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public int getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(int usuarioId) {
+        this.usuarioId = usuarioId;
     }
 }

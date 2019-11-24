@@ -66,11 +66,10 @@ public class UsuarioController {
 
     @PostMapping("login")
     public String logar(UsuarioBean bean, HttpSession session, RedirectAttributes attributes){
-        Usuario usuario;
-        usuario = usuarioRepository.findByEmailAndSenha(bean.getEmail(), bean.getSenha());
+        Usuario usuario = usuarioRepository.findByEmailAndSenha(bean.getEmail(), bean.getSenha());
 
         if (usuario != null){
-            session.setAttribute("usuarioLogado", bean);
+            session.setAttribute("logado", usuario);
             attributes.addFlashAttribute("msg", "Bem vindo!");
             return "redirect:/";
         }
