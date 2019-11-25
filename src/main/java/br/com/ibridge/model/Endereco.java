@@ -93,6 +93,6 @@ public class Endereco {
     }
 
     public String getEnderecoCompleto(){
-        return (logradouro + " Nº " + numero + ", " + bairro + " - " + cidade + " " + estado);
+        return (logradouro + ", Nº " + numero + " - " + bairro + " - " + cidade + ", " + estado);
     }
 }

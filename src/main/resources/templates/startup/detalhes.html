@@ -7,14 +7,14 @@
     <title>Home</title>
 </head>
 <body>
-    <div layout:fragment="conteudo">
+    <div layout:fragment="conteudo" th:object="${startup}">
         <div th:text="${msg}" class="alert alert-success" th:if="${msg}"></div>
 
         <div class="startup-cover">
-            <img th:src="@{/images/card_startup.png}">
+            <img th:src="*{imagem}">
         </div>
 
-        <div class="container-fluid mb-5" th:object="${startup}">
+        <div class="container-fluid mb-5">
             <div class="container">
                 <div class="my-3">
                     <h1 th:text="*{nome}"></h1>
@@ -51,7 +51,6 @@
                             <i class="fas fa-user-lock my-2"></i>
                             <p><a th:href="@{/usuario/login}" class="text-light"><strong>Entre</strong></a> ou <a th:href="@{/usuario/cadastrar}" class="text-light"><strong>Cadastre-se</strong></a> para ter acesso ao conteudo</p>
                         </div>
-
                     </div>
                 </div>
             </div>

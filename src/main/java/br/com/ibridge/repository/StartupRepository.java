@@ -8,5 +8,5 @@ import java.util.List;
 public interface StartupRepository extends JpaRepository<Startup,Integer> {
 
     List<Startup> findByNomeContainsIgnoreCase(String nome);
-
+    List<Startup> findAllByUsuarioId(int id);
 }

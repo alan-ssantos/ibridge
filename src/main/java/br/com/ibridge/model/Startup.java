@@ -45,6 +45,9 @@ public class Startup {
     @Valid
     private Endereco endereco;
 
+    @NotBlank
+    private String imagem;
+
     @NotNull
     @Column(name = "USUARIO_ID")
     private int usuarioId;
@@ -113,6 +116,14 @@ public class Startup {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
     public int getUsuarioId() {

@@ -8,12 +8,61 @@
 </head>
 <body>
 <div layout:fragment="conteudo">
-    <div th:text="${msg}" class="alert alert-success" th:if="${msg}"></div>
 
     <div class="container" th:object="${usuario}">
-        <h1 th:text="*{nome}"></h1>
-        <p th:text="*{email}"></p>
-        <p th:text="*{telefone}"></p>
+        <div th:text="${msg}" class="alert alert-success" th:if="${msg}"></div>
+
+        <div class="py-5 d-flex align-items-center">
+            <h1 th:text="*{nome}" class="pr-4"></h1>
+            <a th:href="@{/usuario/logout}" class="btn btn-danger"> <i class="fas fa-sign-out-alt"></i> Sair </a>
+        </div>
+
+        <div>
+            <p class="lead">Suas informações:</p>
+
+            <span><strong>Email: </strong></span>
+            <p th:text="*{email}"></p>
+
+            <span><strong>Telefone: </strong></span>
+            <p th:text="*{telefone}"></p>
+
+            <span><strong>Nascimento: </strong></span>
+            <p th:text="*{dataNascimento}"></p>
+
+            <span><strong>É Investidor? </strong></span>
+            <p th:text="*{investidor}?'Sim':'Não'"></p>
+
+            <span><strong>Endereço: </strong></span>
+            <p th:text="*{endereco.enderecoCompleto}"></p>
+
+            <a th:href="@{/usuario/editar/} + *{id}" class="btn btn-secondary"><i class="fas fa-edit"></i> Editar informações</a>
+        </div>
+
+        <div class="my-4">
+            <p class="lead">Suas startups: </p>
+            <table class="table table-striped table-dark text-light ">
+                <tr class="bg-secondary ">
+                    <th>Nome</th>
+                    <th class="w-50">Descrição</th>
+                    <th>Fundação</th>
+                    <th>Ações</th>
+                </tr>
+                <tr th:each="s:${startups}">
+                    <td th:text="${s.nome}" scope="row"></td>
+                    <td th:text="${s.descricao}"></td>
+                    <td th:text="${#temporals.format(s.dataFundacao,'dd/MM/yyyy')}"></td>
+                    <td>
+                        <a th:href="@{/startup/} + ${s.id}" class="btn btn-info">Visualizar</a>
+                        <a th:href="@{/startup/editar/} + ${s.id}" class="btn btn-outline-light">Editar</a>
+<!--                        &lt;!&ndash; Botão para acionar modal &ndash;&gt;-->
+<!--                        <button th:onclick="|codigo.value = ${item.codigo}|" type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#modalExemplo">-->
+<!--                            Excluir-->
+<!--                        </button>-->
+                    </td>
+                </tr>
+            </table>
+        </div>
+
     </div>
 </div>
 <div layout:fragment="rodape"></div>

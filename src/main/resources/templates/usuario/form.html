@@ -13,77 +13,96 @@
                 <div th:text="${msg}" class="alert alert-success" th:if="${msg}"></div>
 
                 <div class="py-5">
-                    <h1 th:text="${usuario.id==0?'Cadastro de Usuario':'Atualização de Usuario'}"></h1>
-                    <p class="lead">Cadastre-se e tenha completo a plataforma.</p>
+                    <h1 th:text="${usuario.id==0?'Cadastro de Usuário':'Atualização de Usuário'}"></h1>
+                    <p class="lead">Cadastre-se e tenha acesso completo a plataforma.</p>
                 </div>
 
                 <form th:action="@{/usuario/salvar}" th:object="${usuario}" method="post">
                     <input type="hidden" th:field="*{id}"/>
-                    <div class="form-group">
-                        <label>Nome:</label>
-                        <input type="text" th:field="*{nome}" class="form-control">
-                        <p th:errors="*{nome}" class="text-danger"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>E-mail:</label>
-                        <input type="email" th:field="*{email}" class="form-control">
-                        <p th:errors="*{email}" class="text-danger"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Senha:</label>
-                        <input type="text" th:field="*{senha}" class="form-control">
-                        <p th:errors="*{senha}" class="text-danger"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Telefone:</label>
-                        <input type="text" th:field="*{telefone}" class="form-control">
-                        <p th:errors="*{telefone}" class="text-danger"></p>
-                    </div>
 
-                    <div class="form-group">
-                        <label>Data de Nascimento:</label>
-                        <input type="text" th:field="*{dataNascimento}" class="form-control">
-                        <p th:errors="*{dataNascimento}" class="text-danger"></p>
-                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label th:for="nome">Nome completo: *</label>
+                                <input type="text" th:field="*{nome}" class="form-control" placeholder="Ex.: José João da Silva" required>
+                                <p th:errors="*{nome}" class="text-danger"></p>
+                            </div>
 
-                    <div class="form-group">
-                        <input type="checkbox" th:field="*{investidor}" class="form-check-inline">
-                        <label>É um investidor?</label>
-                        <p th:errors="*{investidor}" class="text-danger"></p>
-                    </div>
+                            <div class="form-group">
+                                <label th:for="email">E-mail: *</label>
+                                <input type="email" th:field="*{email}" class="form-control" placeholder="Ex.: josejoao@email.com" required>
+                                <p th:errors="*{email}" class="text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <label th:for="senha">Senha: *</label>
+                                <input type="password" th:field="*{senha}" class="form-control" placeholder="***" required>
+                                <p th:errors="*{senha}" class="text-danger"></p>
+                            </div>
 
-                    <div class="form-group">
-                        <label>CEP:</label>
-                        <input type="text" th:field="*{endereco.cep}" class="form-control">
-                        <p th:errors="*{endereco.cep}" class="text-danger"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Logradrouro:</label>
-                        <input type="text" th:field="*{endereco.logradouro}" class="form-control">
-                        <p th:errors="*{endereco.logradouro}" class="text-danger"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Numero:</label>
-                        <input type="text" th:field="*{endereco.numero}" class="form-control">
-                        <p th:errors="*{endereco.numero}" class="text-danger"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Bairro:</label>
-                        <input type="text" th:field="*{endereco.bairro}" class="form-control">
-                        <p th:errors="*{endereco.bairro}" class="text-danger"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Cidade:</label>
-                        <input type="text" th:field="*{endereco.cidade}" class="form-control">
-                        <p th:errors="*{endereco.cidade}" class="text-danger"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Estado:</label>
-                        <input type="text" th:field="*{endereco.estado}" class="form-control">
-                        <p th:errors="*{endereco.estado}" class="text-danger"></p>
-                    </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label th:for="telefone">Telefone:</label>
+                                    <input type="text" th:field="*{telefone}" class="form-control" placeholder="(00) 1122-3344">
+                                    <p th:errors="*{telefone}" class="text-danger"></p>
+                                </div>
 
-                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                <div class="col-md-6 form-group">
+                                    <label th:for="dataNascimento">Data de Nascimento:</label>
+                                    <input type="text" th:field="*{dataNascimento}" class="form-control" placeholder="Ex.: 01/01/2001">
+                                    <p th:errors="*{dataNascimento}" class="text-danger"></p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="checkbox" th:field="*{investidor}" class="form-check-inline">
+                                <label th:for="investidor">É um investidor?</label>
+                                <p th:errors="*{investidor}" class="text-danger"></p>
+                            </div>
+                        </div>
+
+                        <!-- COLUNA DE ENDEREÇO -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label th:for="endereco.cep">CEP:</label>
+                                <input type="text" th:field="*{endereco.cep}" class="form-control" placeholder="00000-00" required>
+                                <p th:errors="*{endereco.cep}" class="text-danger"></p>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-9 form-group">
+                                    <label th:for="endereco.logradouro">Logradrouro:</label>
+                                    <input type="text" th:field="*{endereco.logradouro}" class="form-control" placeholder="Ex.: Rua das Rosas" required>
+                                    <p th:errors="*{endereco.logradouro}" class="text-danger"></p>
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label th:for="endereco.numero">Numero:</label>
+                                    <input type="text" th:field="*{endereco.numero}" class="form-control" required>
+                                    <p th:errors="*{endereco.numero}" class="text-danger"></p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label th:for="endereco.bairro">Bairro:</label>
+                                <input type="text" th:field="*{endereco.bairro}" class="form-control" placeholder="Ex.: Bela Vista" required>
+                                <p th:errors="*{endereco.bairro}" class="text-danger"></p>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label th:for="endereco.cidade">Cidade:</label>
+                                    <input type="text" th:field="*{endereco.cidade}" class="form-control" placeholder="Ex.: São Paulo" required>
+                                    <p th:errors="*{endereco.cidade}" class="text-danger"></p>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label th:for="endereco.estado">Estado:</label>
+                                    <input type="text" th:field="*{endereco.estado}" class="form-control" placeholder="Ex.: SP" required>
+                                    <p th:errors="*{endereco.estado}" class="text-danger"></p>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

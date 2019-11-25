@@ -3,6 +3,7 @@ package br.com.ibridge.model;
 import org.springframework.context.annotation.Scope;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -42,6 +43,7 @@ public class Usuario {
     private boolean investidor;
 
     @ManyToOne(cascade = CascadeType.ALL)
+    @Valid
     private Endereco endereco;
 
     public int getId() {

@@ -20,84 +20,87 @@
             <form th:action="@{/startup/salvar}" th:object="${startup}" enctype="multipart/form-data" method="post">
                 <input type="hidden" th:field="*{id}"/>
                 <input type="hidden" th:value="${session.get('logado').id}" id="usuarioId" name="usuarioId">
+                <input type="hidden" id="imagem" name="imagem" value="https://assets-ouch.icons8.com/preview/966/bdf02213-610a-4790-8a48-13d5e98936f6.png">
+
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label for="nome">Nome: *</label>
-                            <input type="text" th:field="*{nome}" class="form-control" id="nome" placeholder="Enter email">
+                            <label th:for="nome">Nome da Startup: *</label>
+                            <input type="text" th:field="*{nome}" class="form-control" placeholder="" required>
                             <p th:errors="*{nome}" class="form-text text-danger"></p>
                         </div>
 
                         <div class="form-group">
-                            <label for="inDesc">Descrição: </label>
-                            <textarea th:field="*{descricao}" class="form-control" id="inDesc" placeholder="Nós somos um projeto que..."></textarea>
+                            <label th:for="descricao">Descrição: *</label>
+                            <textarea th:field="*{descricao}" class="form-control" placeholder="Nós somos um projeto que..." required></textarea>
                             <p th:errors="*{descricao}" class="form-text text-danger"></p>
                         </div>
 
                         <div class="form-group">
-                            <label for="inFundacao">Data de Fundação: *</label>
-                            <input type="text" th:field="*{dataFundacao}" class="form-control" id="inFundacao" placeholder="00/00/0000">
+                            <label th:for="dataFundacao">Data de Fundação:</label>
+                            <input type="text" th:field="*{dataFundacao}" class="form-control" placeholder="Ex.: 01/01/2001">
                             <p th:errors="*{dataFundacao}" class="form-text text-danger"></p>
                         </div>
 
                         <div class="row">
-                            <div class="form-group col-5">
-                                <label for="inTelefone">Telefone: *</label>
-                                <input type="tel" th:field="*{telefone}" class="form-control" id="inTelefone" placeholder="(00) 0000-0000">
+                            <div class="form-group col-md-5">
+                                <label th:for="telefone">Telefone:</label>
+                                <input type="tel" th:field="*{telefone}" class="form-control" placeholder="(11) 1122-3344">
                                 <p th:errors="*{telefone}" class="form-text text-danger"></p>
                             </div>
 
-                            <div class="form-group col-7">
-                                <label for="inEmailContato">Email para contato: *</label>
-                                <input type="email" th:field="*{email}" class="form-control" id="inEmailContato" placeholder="a@a.com">
+                            <div class="form-group col-md-7">
+                                <label th:for="email">Email para contato: *</label>
+                                <input type="email" th:field="*{email}" class="form-control" placeholder="Ex.: contato@startup.com" required>
                                 <p th:errors="*{email}" class="form-text text-danger"></p>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="inSite">Site ou blog:</label>
-                            <input type="url" th:field="*{site}" class="form-control" id="inSite" placeholder="example.com">
+                            <label th:for="site">Site ou blog:</label>
+                            <input type="text" th:field="*{site}" class="form-control" placeholder="http://startup.com">
                             <p th:errors="*{site}" class="form-text text-danger"></p>
                         </div>
                     </div>
+
                     <!-- COLUNA DE ENDEREÇO -->
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label for="inCep">CEP: *</label>
-                            <input type="text" th:field="*{endereco.cep}" class="form-control" id="inCep"  placeholder="00000-000">
+                            <label th:for="enderecoCEP">CEP: *</label>
+                            <input type="text" th:field="*{endereco.cep}" class="form-control" id="enderecoCEP" placeholder="00000-000" required>
                             <p th:errors="*{endereco.cep}" class="form-text text-danger"></p>
                         </div>
 
                         <div class="row">
-                            <div class="form-group col-9">
-                                <label for="inLogradouro">Logradouro: *</label>
-                                <input type="text" th:field="*{endereco.logradouro}" class="form-control" id="inLogradouro"  placeholder="00000-000">
+                            <div class="form-group col-md-9">
+                                <label th:for="endereco.logradouro">Logradouro: *</label>
+                                <input type="text" th:field="*{endereco.logradouro}" class="form-control" placeholder="Ex.: Rua das Rosas" required>
                                 <p th:errors="*{endereco.logradouro}" class="form-text text-danger"></p>
                             </div>
 
-                            <div class="form-group col-3">
-                                <label for="inNumero">Numero: *</label>
-                                <input type="text" th:field="*{endereco.numero}" class="form-control" id="inNumero"  placeholder="00000-000">
+                            <div class="form-group col-md-3">
+                                <label th:for="endereco.numero">Numero: *</label>
+                                <input type="text" th:field="*{endereco.numero}" class="form-control" required>
                                 <p th:errors="*{endereco.numero}" class="form-text text-danger"></p>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="inBairro">Bairro: *</label>
-                            <input type="text" th:field="*{endereco.bairro}" class="form-control" id="inBairro" placeholder="00000-000">
+                            <label th:for="endereco.bairro">Bairro: *</label>
+                            <input type="text" th:field="*{endereco.bairro}" class="form-control" placeholder="Ex.: Pinheiros" required>
                             <p th:errors="*{endereco.bairro}" class="form-text text-danger"></p>
                         </div>
 
                         <div class="row">
-                            <div class="form-group col-6">
-                                <label for="inCidade">Cidade: *</label>
-                                <input type="text" th:field="*{endereco.cidade}" class="form-control" id="inCidade" placeholder="00000-000">
+                            <div class="form-group col-md-6">
+                                <label th:for="endereco.cidade">Cidade: *</label>
+                                <input type="text" th:field="*{endereco.cidade}" class="form-control" placeholder="Ex.: São Paulo" required>
                                 <p th:errors="*{endereco.cidade}" class="form-text text-danger"></p>
                             </div>
 
-                            <div class="form-group col-6">
-                                <label for="inEstado">Estado: *</label>
-                                <input type="text" th:field="*{endereco.estado}" class="form-control" id="inEstado" placeholder="00000-000">
+                            <div class="form-group col-md-6">
+                                <label th:for="endereco.estado">Estado: *</label>
+                                <input type="text" th:field="*{endereco.estado}" class="form-control" placeholder="Ex.: SP" required>
                                 <p th:errors="*{endereco.estado}" class="form-text text-danger"></p>
                             </div>
                         </div>
