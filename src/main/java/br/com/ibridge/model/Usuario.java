@@ -31,7 +31,7 @@ public class Usuario {
     @Column(name = "USUARIO_SENHA", nullable = false)
     private String senha;
 
-    @Column(name = "USUARIO_TELEFONE", length = 11)
+    @Column(name = "USUARIO_TELEFONE")
     private String telefone;
 
     @Past

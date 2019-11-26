@@ -80,10 +80,10 @@ public class StartupController {
         return "startup/form";
     }
 
-    @PostMapping("deletar/{id}")
-    public String deletar(@PathVariable int id, RedirectAttributes redirectAttributes){
-        startupRepository.deleteById(id);
-        redirectAttributes.addFlashAttribute("msg", "Startup removida com sucesso");
-        return "redirect:/startup/listar";
+    @PostMapping("deletar")
+    public String remover(int codigo, RedirectAttributes redirect){
+        redirect.addFlashAttribute("msg", "Startup removida com sucesso");
+        startupRepository.deleteById(codigo);
+        return "redirect:/  ";
     }
 }

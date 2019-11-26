@@ -20,7 +20,6 @@
             <form th:action="@{/startup/salvar}" th:object="${startup}" enctype="multipart/form-data" method="post">
                 <input type="hidden" th:field="*{id}"/>
                 <input type="hidden" th:value="${session.get('logado').id}" id="usuarioId" name="usuarioId">
-                <input type="hidden" id="imagem" name="imagem" value="https://assets-ouch.icons8.com/preview/966/bdf02213-610a-4790-8a48-13d5e98936f6.png">
 
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
@@ -60,6 +59,12 @@
                             <label th:for="site">Site ou blog:</label>
                             <input type="text" th:field="*{site}" class="form-control" placeholder="http://startup.com">
                             <p th:errors="*{site}" class="form-text text-danger"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label th:for="imagem">URL da Imagem:</label>
+                            <input type="text" id="imagem" name="imagem" value="https://assets-ouch.icons8.com/preview/966/bdf02213-610a-4790-8a48-13d5e98936f6.png" class="form-control">
+                            <p th:errors="*{imagem}" class="form-text text-danger"></p>
                         </div>
                     </div>
 
@@ -109,6 +114,9 @@
                     </div>
                 </div>
             </form>
+
+
+
         </div>
     </div>
 </div>

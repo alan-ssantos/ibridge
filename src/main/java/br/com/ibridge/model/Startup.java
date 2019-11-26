@@ -35,7 +35,7 @@ public class Startup {
     @Column(name = "STARTUP_EMAIL", nullable = false)
     private String email;
 
-    @Column(name = "STARTUP_TELEFONE", length = 11)
+    @Column(name = "STARTUP_TELEFONE")
     private String telefone;
 
     @Column(name = "STARTUP_SITE")

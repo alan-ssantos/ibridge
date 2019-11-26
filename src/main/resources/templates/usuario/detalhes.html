@@ -54,13 +54,36 @@
                     <td>
                         <a th:href="@{/startup/} + ${s.id}" class="btn btn-info">Visualizar</a>
                         <a th:href="@{/startup/editar/} + ${s.id}" class="btn btn-outline-light">Editar</a>
-<!--                        &lt;!&ndash; Botão para acionar modal &ndash;&gt;-->
-<!--                        <button th:onclick="|codigo.value = ${item.codigo}|" type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#modalExemplo">-->
-<!--                            Excluir-->
-<!--                        </button>-->
+                        <button th:onclick="|codigo.value = ${s.id}|" type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#modalExemplo">
+                            Excluir
+                        </button>
                     </td>
                 </tr>
             </table>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade text-dark" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Deseja realmente excluir a Startup?
+                    </div>
+                    <div class="modal-footer">
+                        <form th:action="@{/startup/deletar}" method="post">
+                            <input type="hidden" name="codigo" id="codigo">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                            <button type="submit" class="btn btn-danger">Sim</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
