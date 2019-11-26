@@ -9,7 +9,41 @@
 <body>
 
 <div layout:fragment="conteudo">
-    <p>EM DESENVOLVIMENTO</p>
+    <div class="container">
+        <div class="py-5">
+            <h1>Quem somos</h1>
+            <p class="lead">
+                A I-BRIDGE é uma startup de investimento e tecnologia, que busca atender de imediato, toda a demanda existente na região da grande São Paulo.
+            </p>
+        </div>
+        <div class="row py-5">
+            <div class="col-md-6 my-auto">
+                <span><strong>A idéia: </strong></span>
+                <p>
+                    A iniciativa da criação dessa Startup surgiu por ser uma área de crescimento no mercado e por se notar o avanço das ferramentas tecnológicas.
+                    Pretendendo trabalhar com investidores e empreendedores que possuem grandes ideias inovadoras!
+                </p>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center">
+                <img th:src="@{images/ideia_icon.png}" alt="" class="w-50">
+            </div>
+        </div>
+
+        <div class="row py-5 flex-sm-row-reverse">
+            <div class="col-md-6 my-auto">
+                <span><strong>Nossa missão: </strong></span>
+                <p>
+                    A I-BRIDGE, oferecerá a seus clientes: auxilio jurídico, plataforma digital, auxilio na elaboração de um plano de negócio e marketing digital para alavancar suas ideias.
+                    Atendendo a todas as classes sociais, pessoas físicas e pessoas jurídicas.
+                    A mesma estará localizada na Avenida Paulista, Centro - São Paulo – SP.
+                </p>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center">
+                <img th:src="@{images/mission_icon.png}" alt="" class="w-50">
+            </div>
+        </div>
+
+    </div>
 </div>
 
 </body>
